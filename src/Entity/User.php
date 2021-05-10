@@ -100,7 +100,9 @@ class User implements UserInterface
 
     public function __construct()
     {
+        
         $this->roles = ['ROLE_USER'];
+        $this->slug= $this->prenom."-".$this->nom;
         $this->artworks = new ArrayCollection();
     }
 
