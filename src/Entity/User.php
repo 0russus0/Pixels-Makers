@@ -102,7 +102,7 @@ class User implements UserInterface
     {
         
         $this->roles = ['ROLE_USER'];
-        $this->slug= $this->prenom."-".$this->nom;
+        $this->slug = $this->prenom."-".$this->nom;
         $this->artworks = new ArrayCollection();
     }
 
