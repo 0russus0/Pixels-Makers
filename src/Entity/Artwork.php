@@ -29,10 +29,6 @@ class Artwork
      */
     private $titre;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $idUser;
 
     /**
      * @ORM\Column(type="text")
@@ -136,18 +132,6 @@ class Artwork
     public function setTitre(string $titre): self
     {
         $this->titre = $titre;
-
-        return $this;
-    }
-
-    public function getIdUser(): ?int
-    {
-        return $this->idUser;
-    }
-
-    public function setIdUser(int $idUser): self
-    {
-        $this->idUser = $idUser;
 
         return $this;
     }

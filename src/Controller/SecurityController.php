@@ -11,9 +11,9 @@ class SecurityController extends AbstractController
 {
 
     /**
-     * @Route("/home", name="home")
+     * @Route("/user", name="user")
      */
-    public function home(AuthenticationUtils $authenticationUtils): Response
+    public function user(AuthenticationUtils $authenticationUtils): Response
     {
         return new Response('Vous êtes connecté');
     }

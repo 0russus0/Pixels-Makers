@@ -19,22 +19,20 @@ class ArtworkRepository extends ServiceEntityRepository
         parent::__construct($registry, Artwork::class);
     }
 
-    // /**
-    //  * @return Artwork[] Returns an array of Artwork objects
-    //  */
-    /*
-    public function findByExampleField($value)
+   /**
+     * @return Artwork[] Returns an array of Artwork objects
+     */
+    
+    public function findLatest()
     {
         return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
+            ->orderBy('a.date_create', 'DESC')
+            ->setMaxResults(20)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Artwork

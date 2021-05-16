@@ -18,11 +18,6 @@ class Comment
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $idUser;
-
-    /**
      * @ORM\Column(type="text")
      */
     private $contenu;
@@ -48,21 +43,15 @@ class Comment
      */
     private $activated;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getIdUser(): ?int
-    {
-        return $this->idUser;
-    }
-
-    public function setIdUser(int $idUser): self
-    {
-        $this->idUser = $idUser;
-
-        return $this;
     }
 
     public function getContenu(): ?string
@@ -121,6 +110,18 @@ class Comment
     public function setActivated(bool $activated): self
     {
         $this->activated = $activated;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

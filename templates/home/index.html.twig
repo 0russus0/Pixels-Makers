@@ -5,5 +5,10 @@
 {% block body %}
     <h1>Pixels Makers, créer, partager, soutenir</h1>
     <p>Ceci est la page d'accueil elle sert de gallerie principale</p>
+
+    {% for artwork in artworks %} 
+    <p>{{artwork.titre}}</p>
+
+    {% endfor %}
 {% endblock %}
 
