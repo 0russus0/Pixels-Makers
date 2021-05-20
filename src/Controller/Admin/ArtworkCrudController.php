@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Artwork;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -18,7 +19,7 @@ class ArtworkCrudController extends AbstractCrudController
         return Artwork::class;
     }
 
-    
+//configuration des champs 
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -27,14 +28,20 @@ class ArtworkCrudController extends AbstractCrudController
             TextField::new('titre'),
             TextField::new('slug')->hideOnForm(),
             TextareaField::new('contenu'),
-            DateField::new('date_create'),
+            DateField::new('date_create')->hideOnForm(),
             TextField::new('image1'),
             ChoiceField::new('type')->setChoices(['Artwork'=>1,'Article'=>2]),
             TextField::new('file'),  
             BooleanField::new('shared'),
             BooleanField::new('gallery'),         
-   // en attendant d'utiliser visch et ImageField
+            // en attendant d'utiliser visch et ImageField
         ];
     }
-    
+//configuration du CRUD
+    public function configureCrud(Crud $crud): Crud
+    {
+//tri des dates de création plus rescent au plus ancien
+        return $crud
+        ->setDefaultSort(['date_create' => 'DESC']);
+    }
 }
