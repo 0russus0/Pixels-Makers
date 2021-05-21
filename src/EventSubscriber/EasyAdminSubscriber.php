@@ -3,6 +3,7 @@
 namespace App\EventSubscriber;
 
 use App\Entity\Artwork;
+use App\Entity\Category;
 use DateTime;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -23,7 +24,7 @@ class EasyAdminSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return[
-            BeforeEntityPersistedEvent::class => ['setArtworkSlugAndDateAndUser'],            
+            BeforeEntityPersistedEvent::class => [['setArtworkSlugAndDateAndUser'], ['setCategorySlug' ]],            
         ];
     }
 //Recuperation de l'instance Artwork
@@ -35,13 +36,23 @@ class EasyAdminSubscriber implements EventSubscriberInterface
             return;
         }
 //Si c'est bien un Artwork on génère le slug à partir du titre et la date
-        $slug = $this->slugger->slug($entity->getTitre());
+        $slug = strtolower($this->slugger->slug($entity->getTitre()));
         $entity->setSlug($slug);
 //idem pour la date
         $now = new DateTime('now');
-        $entity->setSlug($slug);
+        $entity->setDateCreate($now);
         $user = $this->security->getUser();
         $entity->setUser($user);
         $entity->setBeliked(0);
+    }
+    public function setCategorySlug(BeforeEntityPersistedEvent $event)
+    {
+        $entity = $event->getEntityInstance();
+
+        if(!($entity instanceof Category)) {
+            return;
+        }
+        $slug = strtolower($this->slugger->slug($entity->getTitre()));
+        $entity->setSlug($slug);
     }
 }

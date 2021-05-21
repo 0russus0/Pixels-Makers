@@ -1,0 +1,9 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+       artwork_images:
+           uri_prefix: '%artwork_images%'
+           upload_destination: '%kernel.project_dir%/public%artwork_images%'
+        #    Fonction de vich permettant d'éviter les doublons dans le nommage des fichiers uploadés.
+           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
