@@ -27,7 +27,7 @@ class ArtworkRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('a')
             ->orderBy('a.date_create', 'DESC')
-            ->setMaxResults(20)
+            ->setMaxResults(16)
             ->getQuery()
             ->getResult()
         ;

@@ -48,6 +48,8 @@ class Artwork
      */
     private $image1;
 
+
+    
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
