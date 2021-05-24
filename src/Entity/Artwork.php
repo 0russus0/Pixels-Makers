@@ -45,25 +45,17 @@ class Artwork
 
     /**
      * @ORM\Column(type="string", length=255)
+     * 
      */
     private $image1;
 
-
-    
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Vich\UploadableField(mapping="artwork_images", fileNameProperty="image1")
+     * 
+     * @var File|null
      */
-    private $image2;
+    private $imagePrincipale;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $image3;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $image4;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -165,6 +157,7 @@ class Artwork
         return $this;
     }
 
+    
     public function getImage1(): ?string
     {
         return $this->image1;
@@ -177,41 +170,26 @@ class Artwork
         return $this;
     }
 
-    public function getImage2(): ?string
+    //geter et seter de l'image uplodable 
+
+    public function getimagePrincipale()
     {
-        return $this->image2;
+        return $this->imagePrincipale;
+    }
+    public function setimagePrincipale(File $file = null)
+    {
+        $this->imagePrincipale = $file;
+        if (null !== $file) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+
+        if($file){
+            $this->date_create = new \DateTime('now');
+        }
     }
 
-    public function setImage2(?string $image2): self
-    {
-        $this->image2 = $image2;
-
-        return $this;
-    }
-
-    public function getImage3(): ?string
-    {
-        return $this->image3;
-    }
-
-    public function setImage3(?string $image3): self
-    {
-        $this->image3 = $image3;
-
-        return $this;
-    }
-
-    public function getImage4(): ?string
-    {
-        return $this->image4;
-    }
-
-    public function setImage4(?string $image4): self
-    {
-        $this->image4 = $image4;
-
-        return $this;
-    }
 
     public function getFile(): ?string
     {

@@ -14,6 +14,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 #[IsGranted('ROLE_USER')]
 class ArtworkCrudController extends AbstractCrudController
@@ -26,22 +27,31 @@ class ArtworkCrudController extends AbstractCrudController
 //configuration des champs 
     public function configureFields(string $pageName): iterable
     {
-        return [
+        $imageFile = TextField::new('imagePrincipale')->setFormType(VichImageType::class)->setTranslationParameters(['form.label.delete'=>'Supprimer?']);
+        $image = ImageField::new('image1')->setBasePath('/uploads/images');
+
+
+        $fields = [
 
             //ChoiceField::new('type'),
             TextField::new('titre'),
             TextField::new('slug')->hideOnForm(),
-            TextEditorField::new('contenu'),
+            //TextEditorField::new('contenu'), Si Admin
+            TextField::new('contenu'),
             AssociationField::new('user')->hideOnForm(),
             DateField::new('date_create')->hideOnForm(),
-            AssociationField::new('category')->setLabel('Catégorie'),
-            TextField::new('image1'),
+            AssociationField::new('category')->setLabel('Catégorie')->onlyOnForms(),
             ChoiceField::new('type')->setChoices(['Artwork'=>1,'Article'=>2]),
-            TextField::new('file'),  
+            TextField::new('file')->onlyOnForms(),  
             BooleanField::new('shared'),
-            BooleanField::new('gallery'),         
-            // en attendant d'utiliser visch et ImageField
+            BooleanField::new('gallery'),                
         ];
+        if ($pageName == Crud::PAGE_INDEX || $pageName == Crud::PAGE_DETAIL) {
+            $fields[] = $image;
+        } else {
+            $fields[] = $imageFile;
+        }
+        return $fields;
     }
 //configuration du CRUD
     public function configureCrud(Crud $crud): Crud
