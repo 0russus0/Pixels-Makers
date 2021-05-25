@@ -98,10 +98,16 @@ class Artwork
      */
     private $comment;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Attachment::class, mappedBy="artwork", cascade={"persist"})
+     */
+    private $attachments;
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
         $this->comment = new ArrayCollection();
+        $this->attachments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -163,7 +169,7 @@ class Artwork
         return $this->image1;
     }
 
-    public function setImage1(string $image1): self
+    public function setImage1(?string $image1): self
     {
         $this->image1 = $image1;
 
@@ -311,6 +317,36 @@ class Artwork
             // set the owning side to null (unless already changed)
             if ($comment->getArtwork() === $this) {
                 $comment->setArtwork(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Attachment[]
+     */
+    public function getAttachments(): Collection
+    {
+        return $this->attachments;
+    }
+
+    public function addAttachment(Attachment $attachment): self
+    {
+        if (!$this->attachments->contains($attachment)) {
+            $this->attachments[] = $attachment;
+            $attachment->setArtwork($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAttachment(Attachment $attachment): self
+    {
+        if ($this->attachments->removeElement($attachment)) {
+            // set the owning side to null (unless already changed)
+            if ($attachment->getArtwork() === $this) {
+                $attachment->setArtwork(null);
             }
         }
 

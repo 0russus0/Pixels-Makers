@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Artwork;
+use App\Form\AttachmentType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -13,6 +14,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
@@ -44,7 +46,14 @@ class ArtworkCrudController extends AbstractCrudController
             ChoiceField::new('type')->setChoices(['Artwork'=>1,'Article'=>2]),
             TextField::new('file')->onlyOnForms(),  
             BooleanField::new('shared'),
-            BooleanField::new('gallery'),                
+            BooleanField::new('gallery'), 
+            CollectionField::new('attachments')
+            ->setLabel('Ajouter des images')
+            ->setEntryType(AttachmentType::class)
+            ->setTranslationParameters(['form.label.delete'=>'Supprimer?'])
+            ->onlyOnForms(),
+            
+
         ];
         if ($pageName == Crud::PAGE_INDEX || $pageName == Crud::PAGE_DETAIL) {
             $fields[] = $image;
