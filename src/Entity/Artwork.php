@@ -99,7 +99,7 @@ class Artwork
     private $comment;
 
     /**
-     * @ORM\OneToMany(targetEntity=Attachment::class, mappedBy="artwork", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=Attachment::class, mappedBy="artwork", cascade={"persist","remove"})
      */
     private $attachments;
 

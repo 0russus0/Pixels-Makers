@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserArtworkController!{% endblock %}
+
+{% block body %}
+<a href="{{path('my_artworks_create')}}">Créer un artwork</a>
+    <table>
+        <thead>
+            <tr>
+            <th>titre</th>
+            <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for artwork in artworks %}
+        <tr>
+        <td>{{artwork.titre}}</td>
+        <td><a href="{{path('my_artworks_edit',{id:artwork.id})}}">éditer</a><a href="{{path('my_artworks_delete',{id:artwork.id})}}">Suprimer</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
