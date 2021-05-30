@@ -1,0 +1,8 @@
+
+easy_admin:
+    #Global Settings
+    site_name: 'Pixels Makers'
+
+    design:
+        assets:
+            favicon: 'assets/icons/FaviconAdmin.ico'

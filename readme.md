@@ -8,6 +8,11 @@ Est un site internet servant de gallerie pour des créatif. Il a été développ
 *Composer
 *Symfony CLI
 
+
+## Bundles
+EasyAdmin
+VichUploader
+
 Verification des prérequis
 Avec commande 
 ````bash
