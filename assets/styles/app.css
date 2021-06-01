@@ -156,13 +156,22 @@ header {
 
 html {
     font-family: var(--font-family-text);
-    background-color: var(--color-white);
+    background-color: #fff;
     margin: 0;
     padding: 0;
 }
 
+main {
+    min-height: 100%;
+    margin: 0 auto;
+    position: relative;
+    background-color: #fff;
+}
+
 boddy {
     width: 100%;
+    height: auto;
+    background-color: #fff;
 }
 
 h1 {

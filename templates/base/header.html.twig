@@ -25,10 +25,13 @@
     </div>
 <ul class="nav justify-content-end">
   <li class="nav-item">
-    <a class="nav-link active" href="#">À propos</a>
+    <a class="nav-link active" href="{{path('statics_pages')}}">À propos</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link" href="{{ path('makers_list') }}">Les Makers</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Contact</a>
+    <a class="nav-link" href="{{ path('contact') }}">Contact</a>
   </li>
   <li class="nav-item">
     <a class="btn-lightconnect" href="{{ path('app_login') }}">Connexion</a>
