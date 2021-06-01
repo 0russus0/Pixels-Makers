@@ -21,5 +21,24 @@
 
 .form-group {
     width: 50%;
+    padding: 0.5em;
+}
+
+.blocgauche-auth {
+    width: 50%;
+    background-color: var(--color-violet);
+    color: var(--color-white);
+    font-family: var(--font-family-text);
     padding: 2em;
+}
+
+.blocgauche-auth p {
+    color: #fff;
+    font-weight: 500;
+    font-size: 2.5em;
+}
+
+.agreeterm p {
+    font-weight: 400;
+    font-size: 0.8em;
 }
