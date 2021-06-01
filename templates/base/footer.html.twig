@@ -2,7 +2,7 @@
 
  <div class="topfooter">
              <div class="logo">
-                <a href="{{ path('home') }}"><img src="#" alt="logo"></a>
+                <a href="{{ path('home') }}"><img src="{{asset('/images/LogoPixelsMakers.png')}}" alt="logo"></a>
             </div>
  <div class="navfooter">
     <a class="active" href="{{ path('home') }}">Home </a><a>|</a>
@@ -12,16 +12,18 @@
     <a href="#about">Inscription </a><a>|</a>
     <a href="#about">Connexion</a>
   </div>
-  <div class="reseauxfooter"></div>
+  <div class="reseauxfooter">
   <ul>
-  <li><i class="fab fa-instagram" href="#">+</i></li>
-  <li><i class="fab fa-facebook-square" href="#">+</i></li>
-  <li><i class="fab fa-twitter-square" href="#">+</i></li>
-  <li><i class="fab fa-linkedin" href="#">+</i></li>
+  <li><i class="fab fa-instagram" href="#"></i></li>
+  <li><i class="fab fa-facebook-square" href="#"></i></li>
+  <li><i class="fab fa-twitter-square" href="#"></i></li>
+  <li><i class="fab fa-linkedin" href="#"></i></li>
   </ul>
+  </div>
 </div> 
 <div class="botomfooter">
- <a href="{{ path('home') }}"><img src="#" alt="logo"></a> <p>2021 &copy; Pixels Makers</p><a href="#">CGU</a><a> | </a><a href="#">Mentions légales</a>
+<div class="greylogo">
+ <a href="{{ path('home') }}"><img src="{{asset('/images/LogoPixelsMakersGris.png')}}" alt="logo"></a></div> <div><p>2021 &copy; Pixels Makers</p><a href="#">CGU</a><a> | </a><a href="#">Mentions légales</a></div>
   </div>
 </footer>
 

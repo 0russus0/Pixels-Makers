@@ -1,0 +1,25 @@
+.form-container {
+    display: flex;
+    max-width: 410px;
+    margin: auto;
+    box-shadow: var(--general-shadow);
+}
+
+.blocgauche {
+    width: 50%;
+    background-color: var(--color-yellow);
+    color: var(--color-white);
+    font-family: var(--font-family-text);
+    padding: 2em;
+}
+
+.blocgauche p {
+    color: #fff;
+    font-weight: 500;
+    font-size: 2.5em;
+}
+
+.form-group {
+    width: 50%;
+    padding: 2em;
+}

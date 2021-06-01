@@ -4,29 +4,37 @@
   <a href="#contact">Contact</a>
   <a href="#about">Articles</a>
 </div>  #}
+{# <div class="header">
+     <div class="logo">
+         <a href="{{ path('home') }}"><img src="{{asset('/images/LogoPixelsMakers.png')}}" alt="logo"/></a>
+    </div>
+  <input class="menu-btn" type="checkbox" id="menu-btn" />
+  <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+  <ul class="menu">
+    <li><a href="#work"></a></li>
+    <li><a href="#about"></a></li>
+    <li><a href="#careers"></a></li>
+    <li></li>
+    <li><i class="btn-lightconnect" href="#">+</i></li>
+  </ul>
+</div> #}
 
-
-
-<nav class="nav">
-        <div class="container">
-            <div class="logo">
-                <a href="{{ path('home') }}"><img src="#" alt="logo"></a>
-            </div>
-            <div id="mainListDiv" class="main_list">
-                <ul class="navlinks">
-                    <li><a href="#">Créatifs</a></li>
-                    <li><a href="#">À propos</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            <div class="containerlog">
-                <a class="btn-lightconnect" href="#">Connexion</a>
-                <i class="fas fa-plus-square" href="#">+</i>
-            </div>
-            </div>
-            <span class="navTrigger">
-                <i></i>
-                <i></i>
-                <i></i>
-            </span>
-        </div>
-    </nav>
+<div class="header">
+     <div class="logo">
+         <a href="{{ path('home') }}"><img src="{{asset('/images/LogoPixelsMakers.png')}}" alt="logo"/></a>
+    </div>
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">À propos</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Contact</a>
+  </li>
+  <li class="nav-item">
+    <a class="btn-lightconnect" href="{{ path('app_login') }}">Connexion</a>
+  </li>
+  <li class="nav-item">
+  <a id="last"><i class="fas fa-plus-square" id="add" href="#"></i></a>
+  </li>
+</ul>
+</div>
